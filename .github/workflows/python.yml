@@ -1,0 +1,32 @@
+name: API Test Automation with Python, Pytest, and Requests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: 0 20 * * 6
+    
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: "3.9"
+    - name: Install pip dependencies
+      run: |
+        pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run Test and create report
+      run: python -m pytest
+      continue-on-error: true
+    - name: Publish test results
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: results
