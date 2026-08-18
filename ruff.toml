@@ -1,0 +1,17 @@
+# Ruff configuration: single tool for linting + formatting.
+# Docs: https://docs.astral.sh/ruff/
+
+line-length = 88
+target-version = "py39"
+
+[lint]
+# E  - pycodestyle errors
+# F  - pyflakes
+# I  - isort (import sorting)
+# UP - pyupgrade (modern syntax)
+# B  - flake8-bugbear (likely bugs & design problems)
+select = ["E", "F", "I", "UP", "B"]
+ignore = []
+
+[format]
+quote-style = "double"

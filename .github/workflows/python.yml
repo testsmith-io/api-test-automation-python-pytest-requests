@@ -13,20 +13,24 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v7
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v7
       with:
-        python-version: "3.9"
+        python-version: "3.13"
     - name: Install pip dependencies
       run: |
         pip install --upgrade pip
         pip install -r requirements.txt
+    - name: Lint
+      run: ruff check .
+    - name: Check formatting
+      run: ruff format --check .
     - name: Run Test and create report
       run: python -m pytest
       continue-on-error: true
     - name: Publish test results
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: test-results
         path: results

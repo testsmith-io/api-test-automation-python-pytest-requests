@@ -18,7 +18,7 @@ All examples in this repository are designed to work with the **Practice Softwar
 
 ## Examples Included
 1. **GET Request**: Fetch a list of brands with `GET /brands`.
-2. **Login API**: Authenticate using `POST /login` with an email/password payload.
+2. **Login API**: Authenticate using `POST /users/login` with an email/password payload.
 3. **Protected API Request**: Authenticate, then use a token to fetch data with `GET /invoices`.
 
 ## Prerequisites
